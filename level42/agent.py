@@ -163,4 +163,4 @@ class Level42Agent:
             if hasattr(self, 'analytics') and hasattr(self, 'session_id'):
                 self.analytics.end_session(self.session_id)
         except:
-            pass  # Ignore cleanup errors
+            pass  # Ignore cleanup errors# Enhanced agent functionality
