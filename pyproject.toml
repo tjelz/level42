@@ -76,10 +76,10 @@ docs = [
 level42 = "level42.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/level42-ai/level42-framework"
+Homepage = "https://github.com/tjelz/level42"
 Documentation = "https://docs.level42.dev"
-Repository = "https://github.com/level42-ai/level42-framework"
-"Bug Reports" = "https://github.com/level42-ai/level42-framework/issues"
+Repository = "https://github.com/tjelz/level42"
+"Bug Reports" = "https://github.com/tjelz/level42/issues"
 
 [tool.setuptools]
 packages = ["level42"]

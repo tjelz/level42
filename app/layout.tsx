@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Level42 | Autonomous AI Agents That Pay",
     description: "Revolutionary framework enabling AI agents to autonomously pay for tools, APIs, and services using blockchain micropayments.",
-    creator: "@level42ai",
+    creator: "@xlevel42",
     images: ["/l42-banner.jpeg"],
   },
   robots: {

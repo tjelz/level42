@@ -40,7 +40,7 @@ setup(
     description="A lightweight Python framework for building autonomous AI agents with micropayment capabilities",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/level42-ai/level42-framework",
+    url="https://github.com/tjelz/level42",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -109,8 +109,8 @@ setup(
         "l42",
     ],
     project_urls={
-        "Bug Reports": "https://github.com/level42-ai/level42-framework/issues",
-        "Source": "https://github.com/level42-ai/level42-framework",
+        "Bug Reports": "https://github.com/tjelz/level42/issues",
+        "Source": "https://github.com/tjelz/level42",
         "Documentation": "https://docs.level42.dev",
     },
 )
