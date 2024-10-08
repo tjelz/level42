@@ -628,4 +628,4 @@ class WalletManager:
             "address": self.address,
             "provider_type": type(self.network_provider).__name__,
             "supported_networks": self.get_supported_networks()
-        }
+        }# Wallet security enhancements
