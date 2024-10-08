@@ -283,4 +283,4 @@ class ToolRegistry:
                 conn.commit()
         except sqlite3.Error:
             # If database fails, continue
-            pass
+            pass# Tool registry improvements
