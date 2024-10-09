@@ -604,4 +604,4 @@ def create_debug_config(enabled: bool = True, log_level: str = "DEBUG",
         log_api_calls=True,
         log_agent_decisions=verbose,
         verbose_errors=verbose
-    )
+    )# Analytics enhancements
