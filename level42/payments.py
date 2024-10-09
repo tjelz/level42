@@ -733,4 +733,4 @@ class PaymentProcessor:
             'database_path': self.db_path,
             'wallet_address': self.wallet_manager.get_address(),
             'wallet_network': self.wallet_manager.network
-        }
+        }# Payment processing fixes
