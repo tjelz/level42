@@ -660,4 +660,4 @@ class AgentSwarm:
             self.agent_spending[agent_id] = 0.0
         
         if hasattr(self, 'detailed_spending'):
-            self.detailed_spending = {}
+            self.detailed_spending = {}# Multi-agent coordination
