@@ -287,4 +287,4 @@ class SolanaNetworkProvider(NetworkProvider):
             
             return status.get('err') is None  # No error means success
         except Exception:
-            return False
+            return False# Solana network integration
