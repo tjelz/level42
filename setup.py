@@ -34,7 +34,7 @@ version = get_version()
 
 setup(
     name="level42",
-    version=version,
+    version="0.2.0",
     author="Level42 Framework Team",
     author_email="team@level42.dev",
     description="A lightweight Python framework for building autonomous AI agents with micropayment capabilities",
