@@ -164,3 +164,4 @@ class Level42Agent:
                 self.analytics.end_session(self.session_id)
         except:
             pass  # Ignore cleanup errors# Enhanced agent functionality
+# Stability improvements
