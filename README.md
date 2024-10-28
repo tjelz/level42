@@ -12,3 +12,4 @@ agent = Level42Agent(llm=your_llm, wallet_key="your_key")
 agent.register_tool("weather", "https://api.weather.com")
 result = agent.run("What is the weather in NYC?")
 ```
+# 🚀 Level42 v1.0.0 - Ready for launch!
