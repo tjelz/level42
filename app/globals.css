@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
 @theme inline {
@@ -12,15 +12,187 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  /* Prevent overscroll/rubber band effect on Apple devices */
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Custom animations and effects */
+@keyframes gradient {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out;
+}
+
+/* Grid background effect */
+.grid-background {
+  background-image: 
+    linear-gradient(rgba(168, 85, 247, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #a855f7, #06b6d4);
+  border-radius: 4px;
+}
+
+/* Custom selection colors */
+::selection {
+  background: rgba(168, 85, 247, 0.3);
+  color: white;
+}
+
+/* Smooth scrolling and overscroll prevention */
+html {
+  scroll-behavior: smooth;
+  /* Prevent overscroll/rubber band effect on Apple devices */
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Additional overscroll prevention for all elements */
+* {
+  overscroll-behavior: none;
+}
+
+/* Prevent bounce/rubber band scrolling on iOS devices */
+@supports (-webkit-touch-callout: none) {
+  html, body {
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Universal overscroll prevention for all Apple devices */
+@media (-webkit-min-device-pixel-ratio: 1) {
+  html, body {
+    position: relative;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Prevent pull-to-refresh */
+  body {
+    touch-action: pan-y;
+  }
+}
+
+/* Navbar drop animation */
+@keyframes nav-drop-centered {
+  0% {
+    transform: translate(-50%, -60px);
+  }
+  70% {
+    transform: translate(-50%, 4px);
+  }
+  100% {
+    transform: translate(-50%, 0px);
+  }
+}
+
+.animate-nav-drop {
+  animation: nav-drop-centered 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+}
+
+/* Custom border widths */
+.border-3 {
+  border-width: 3px;
+}
+
+/* Neon glow effect */
+.neon-glow {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px #a855f7,
+    0 0 35px #a855f7,
+    0 0 40px #a855f7;
+}
+
+/* Enhanced drop shadows */
+.drop-shadow-2xl {
+  filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.8)) 
+          drop-shadow(0 0 20px rgba(168, 85, 247, 0.3));
+}
+
+/* Pulse dot animation */
+.pulse-dot {
+  position: relative;
+}
+
+.pulse-dot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: #a855f7;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-expand 2s ease-in-out infinite;
+}
+
+@keyframes pulse-expand {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
 }

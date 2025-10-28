@@ -1,0 +1,34 @@
+# Include the README and license
+include README.md
+include LICENSE
+
+# Include the requirements file
+include requirements.txt
+
+# Include configuration files
+include pyproject.toml
+include setup.py
+
+# Include examples
+recursive-include examples *.py
+recursive-include examples *.md
+
+# Include tests
+recursive-include tests *.py
+
+# Include documentation
+recursive-include docs *.md *.rst *.txt *.py
+
+# Include package data
+include x402_agent/py.typed
+
+# Exclude unnecessary files
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude *.pyd
+global-exclude __pycache__
+global-exclude .git*
+global-exclude .DS_Store
+global-exclude *.so
+global-exclude .coverage
+global-exclude .pytest_cache

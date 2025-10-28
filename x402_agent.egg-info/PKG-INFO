@@ -1,0 +1,110 @@
+Metadata-Version: 2.4
+Name: x402-agent
+Version: 0.1.0
+Summary: A lightweight Python framework for building autonomous AI agents with micropayment capabilities
+Home-page: https://github.com/x402-agent/x402-agent-framework
+Author: x402-Agent Framework Team
+Author-email: team@x402-agent.dev
+Project-URL: Bug Reports, https://github.com/x402-agent/x402-agent-framework/issues
+Project-URL: Source, https://github.com/x402-agent/x402-agent-framework
+Project-URL: Documentation, https://docs.x402-agent.dev
+Keywords: ai,agents,micropayments,blockchain,cryptocurrency,api,automation,web3,usdc,base
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Office/Business :: Financial
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: requests>=2.28.0
+Requires-Dist: web3>=6.0.0
+Requires-Dist: langchain-core>=0.1.0
+Requires-Dist: cryptography>=3.4.8
+Requires-Dist: pydantic>=2.0.0
+Provides-Extra: solana
+Requires-Dist: solana>=0.30.0; extra == "solana"
+Requires-Dist: solders>=0.18.0; extra == "solana"
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.21.0; extra == "dev"
+Requires-Dist: black>=22.0.0; extra == "dev"
+Requires-Dist: flake8>=4.0.0; extra == "dev"
+Requires-Dist: mypy>=1.0.0; extra == "dev"
+Requires-Dist: coverage>=6.0.0; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: sphinx>=4.0.0; extra == "docs"
+Requires-Dist: sphinx-rtd-theme>=1.0.0; extra == "docs"
+Requires-Dist: myst-parser>=0.18.0; extra == "docs"
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: project-url
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# x402-Agent Framework
+
+A lightweight Python framework for building autonomous AI agents that can pay for tools, APIs, and other agents in real-time using x402 micropayments.
+
+## Overview
+
+The x402-Agent Framework eliminates API key management and subscription friction by enabling pay-per-use interactions through HTTP 402 status codes and USDC payments on blockchain networks.
+
+## Features
+
+- **Autonomous Micropayments**: Agents automatically pay for API access using USDC
+- **HTTP 402 Integration**: Seamless handling of payment-required responses
+- **Multi-Agent Swarms**: Collaborative agents with cost-splitting capabilities
+- **Deferred Payment Batching**: Efficient transaction batching to minimize gas costs
+- **Multi-Blockchain Support**: Base Network primary, extensible to other networks
+- **Simple Setup**: One-line agent creation with minimal configuration
+
+## Installation
+
+```bash
+pip install x402-agent
+```
+
+## Quick Start
+
+```python
+from x402_agent import X402Agent
+
+# Create an agent with your wallet and LLM
+agent = X402Agent(llm=your_llm, wallet_key="your_private_key")
+
+# Register tools
+agent.register_tool("weather", "https://api.weather.com/v1/current")
+
+# Run tasks - payments handled automatically
+result = agent.run("Get the current weather in San Francisco")
+```
+
+## Requirements
+
+- Python 3.8+
+- Private key for Base Network wallet
+- LLM provider (OpenAI, Anthropic, etc.)
+
+## Documentation
+
+Full documentation available at [docs.x402-agent.dev](https://docs.x402-agent.dev)
+
+## License
+
+MIT License - see LICENSE file for details.

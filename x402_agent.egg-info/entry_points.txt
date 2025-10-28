@@ -1,0 +1,2 @@
+[console_scripts]
+x402-agent = x402_agent.cli:main
