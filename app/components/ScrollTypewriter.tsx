@@ -28,33 +28,38 @@ export default function ScrollTypewriter({ code, className = '' }: ScrollTypewri
 
     observer.observe(container);
 
+    let scrollTimeout: NodeJS.Timeout;
     const handleScroll = () => {
       if (!container || !isVisible) return;
 
-      const rect = container.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      
-      // Calculate scroll progress when element is in view
-      const elementTop = rect.top;
-      const elementHeight = rect.height;
-      
-      // Start typing when element enters viewport, complete when it's 70% through
-      const startPoint = windowHeight;
-      const endPoint = windowHeight * 0.3;
-      
-      if (elementTop <= startPoint && elementTop >= endPoint) {
-        const progress = (startPoint - elementTop) / (startPoint - endPoint);
-        scrollProgress.current = Math.min(Math.max(progress, 0), 1);
+      // Throttle scroll events for better performance
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const rect = container.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
         
-        const targetLength = Math.floor(code.length * scrollProgress.current);
-        setDisplayedCode(code.substring(0, targetLength));
-      } else if (elementTop < endPoint) {
-        // Fully visible
-        setDisplayedCode(code);
-      } else {
-        // Not yet visible
-        setDisplayedCode('');
-      }
+        // Calculate scroll progress when element is in view
+        const elementTop = rect.top;
+        const elementHeight = rect.height;
+        
+        // Start typing when element enters viewport, complete when it's 70% through
+        const startPoint = windowHeight;
+        const endPoint = windowHeight * 0.3;
+        
+        if (elementTop <= startPoint && elementTop >= endPoint) {
+          const progress = (startPoint - elementTop) / (startPoint - endPoint);
+          scrollProgress.current = Math.min(Math.max(progress, 0), 1);
+          
+          const targetLength = Math.floor(code.length * scrollProgress.current);
+          setDisplayedCode(code.substring(0, targetLength));
+        } else if (elementTop < endPoint) {
+          // Fully visible
+          setDisplayedCode(code);
+        } else {
+          // Not yet visible
+          setDisplayedCode('');
+        }
+      }, 16); // ~60fps throttling
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -63,6 +68,7 @@ export default function ScrollTypewriter({ code, className = '' }: ScrollTypewri
     return () => {
       observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
     };
   }, [code, isVisible]);
 

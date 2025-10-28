@@ -1,28 +1,56 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
-  --font-display: var(--font-orbitron);
+  --background: #3584e4;
+  --foreground: #000000;
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(to bottom, #4a90e2, #357abd, #2e6da4);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
-  /* Prevent overscroll/rubber band effect on Apple devices */
+  font-family: 'Tahoma', 'MS Sans Serif', system-ui, sans-serif;
   overscroll-behavior: none;
   -webkit-overflow-scrolling: touch;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-/* Custom animations and effects */
+/* Global performance optimizations */
+* {
+  box-sizing: border-box;
+  overscroll-behavior: none;
+}
+
+/* Optimize animations for better performance */
+*,
+*::before,
+*::after {
+  animation-fill-mode: both;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .grid-background,
+  .floating-particles,
+  .breathe-animation,
+  .text-shimmer,
+  .border-pulse {
+    animation: none !important;
+  }
+}
+
+/* Custom animations and effects - optimized */
 @keyframes gradient {
   0%, 100% {
     background-size: 200% 200%;
@@ -47,20 +75,22 @@ body {
 
 .animate-gradient {
   background-size: 200% 200%;
-  animation: gradient 3s ease infinite;
+  animation: gradient 4s ease infinite;
+  will-change: background-position;
 }
 
 .animate-fade-in {
   animation: fade-in 1s ease-out;
+  will-change: opacity, transform;
 }
 
-/* Grid background effect */
+/* Grid background effect - optimized */
 .grid-background {
   background-image: 
-    linear-gradient(rgba(168, 85, 247, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(168, 85, 247, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: grid-move 20s linear infinite;
+    linear-gradient(rgba(168, 85, 247, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.05) 1px, transparent 1px);
+  background-size: 100px 100px;
+  animation: grid-move 40s linear infinite;
 }
 
 @keyframes grid-move {
@@ -68,41 +98,41 @@ body {
     transform: translate(0, 0);
   }
   100% {
-    transform: translate(50px, 50px);
+    transform: translate(100px, 100px);
   }
 }
 
-/* Custom scrollbar */
+/* Windows XP Style Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 16px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #f0f0f0;
+  border: 1px solid #c0c0c0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #a855f7, #06b6d4);
-  border-radius: 4px;
+  background: linear-gradient(to bottom, #e0e0e0, #c0c0c0);
+  border: 1px solid #808080;
+  border-radius: 0;
 }
 
-/* Custom selection colors */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #d0d0d0, #b0b0b0);
+}
+
+/* Windows XP Selection Colors */
 ::selection {
-  background: rgba(168, 85, 247, 0.3);
+  background: #316ac5;
   color: white;
 }
 
 /* Smooth scrolling and overscroll prevention */
 html {
   scroll-behavior: smooth;
-  /* Prevent overscroll/rubber band effect on Apple devices */
   overscroll-behavior: none;
   -webkit-overflow-scrolling: touch;
-}
-
-/* Additional overscroll prevention for all elements */
-* {
-  overscroll-behavior: none;
 }
 
 /* Prevent bounce/rubber band scrolling on iOS devices */
@@ -124,7 +154,6 @@ html {
     -webkit-overflow-scrolling: touch;
   }
   
-  /* Prevent pull-to-refresh */
   body {
     touch-action: pan-y;
   }
@@ -209,19 +238,15 @@ html {
   font-family: var(--font-jetbrains-mono), monospace;
 }
 
-/* Floating particles animation */
+/* Floating particles animation - optimized */
 @keyframes float-particles {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0px);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-10px);
     opacity: 0.4;
-  }
-  33% {
-    transform: translateY(-20px) rotate(120deg);
-    opacity: 0.8;
-  }
-  66% {
-    transform: translateY(-10px) rotate(240deg);
-    opacity: 0.6;
   }
 }
 
@@ -237,11 +262,12 @@ html {
 .floating-particles::after {
   content: '';
   position: absolute;
-  width: 4px;
-  height: 4px;
-  background: linear-gradient(45deg, #a855f7, #06b6d4);
+  width: 2px;
+  height: 2px;
+  background: rgba(168, 85, 247, 0.6);
   border-radius: 50%;
-  animation: float-particles 8s ease-in-out infinite;
+  animation: float-particles 12s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 .floating-particles::before {
@@ -253,7 +279,7 @@ html {
 .floating-particles::after {
   top: 60%;
   right: 15%;
-  animation-delay: 4s;
+  animation-delay: 6s;
 }
 
 /* Subtle glow on hover */
@@ -269,20 +295,19 @@ html {
   transform: translateY(-2px);
 }
 
-/* Breathing animation for backgrounds */
+/* Breathing animation for backgrounds - optimized */
 @keyframes breathe {
   0%, 100% {
-    transform: scale(1);
-    opacity: 0.8;
+    opacity: 0.6;
   }
   50% {
-    transform: scale(1.05);
-    opacity: 1;
+    opacity: 0.8;
   }
 }
 
 .breathe-animation {
-  animation: breathe 4s ease-in-out infinite;
+  animation: breathe 6s ease-in-out infinite;
+  will-change: opacity;
 }
 
 /* Subtle text shimmer effect */
@@ -395,5 +420,254 @@ html {
 
 .glitch-effect:hover {
   animation: glitch 0.3s ease-in-out;
-}/* Frontend enhancements */
-/* UI/UX improvements */
+}
+
+/* Windows XP Specific Styles */
+.xp-window {
+  background: linear-gradient(to bottom, #ece9d8, #e6e2d3);
+  border: 2px outset #d4d0c8;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.xp-titlebar {
+  background: linear-gradient(to bottom, #0a246a, #a6caf0);
+  border-bottom: 1px solid #316ac5;
+  height: 24px;
+  padding: 2px 4px;
+}
+
+.xp-titlebar.inactive {
+  background: linear-gradient(to bottom, #7a7a7a, #c0c0c0);
+}
+
+.xp-button {
+  background: linear-gradient(to bottom, #f0f0f0, #d4d0c8);
+  border: 1px outset #d4d0c8;
+  padding: 2px 8px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 11px;
+}
+
+.xp-button:hover {
+  background: linear-gradient(to bottom, #f8f8f8, #e0e0e0);
+}
+
+.xp-button:active {
+  border: 1px inset #d4d0c8;
+  background: linear-gradient(to bottom, #d4d0c8, #f0f0f0);
+}
+
+.xp-taskbar {
+  background: linear-gradient(to bottom, #245edb, #1941a5);
+  border-top: 1px solid #4a90e2;
+  height: 30px;
+}
+
+.xp-start-button {
+  background: linear-gradient(to right, #2d8f2d, #4db84d);
+  border: 1px outset #4db84d;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  font-family: 'Tahoma', sans-serif;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.xp-start-button:hover {
+  background: linear-gradient(to right, #3da03d, #5dc85d);
+}
+
+.xp-desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px;
+  border-radius: 2px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.xp-desktop-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.xp-desktop-icon.selected {
+  background: rgba(49, 106, 197, 0.3);
+  border: 1px dotted #316ac5;
+}
+
+.xp-menu {
+  background: #f0f0f0;
+  border: 1px solid #808080;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.xp-menu-item {
+  padding: 4px 20px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 11px;
+}
+
+.xp-menu-item:hover {
+  background: #316ac5;
+  color: white;
+}
+
+/* XP Dialog Box Styles */
+.xp-dialog {
+  background: #ece9d8;
+  border: 2px outset #d4d0c8;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.xp-dialog-titlebar {
+  background: linear-gradient(to right, #0a246a, #a6caf0);
+  color: white;
+  font-weight: bold;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 11px;
+}
+
+/* XP Notepad Styles */
+.xp-notepad {
+  background: white;
+  border: 2px inset #d4d0c8;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Remove futuristic animations for XP theme */
+@media (prefers-reduced-motion: no-preference) {
+  .grid-background,
+  .floating-particles,
+  .breathe-animation,
+  .text-shimmer,
+  .border-pulse,
+  .glow-on-hover,
+  .magnetic-hover {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* XP-style focus outlines */
+button:focus,
+a:focus {
+  outline: 1px dotted #000;
+  outline-offset: 2px;
+}
+
+/* XP System Font Stack */
+.xp-font {
+  font-family: 'Tahoma', 'MS Sans Serif', sans-serif;
+  font-size: 11px;
+}
+
+.xp-font-large {
+  font-family: 'Tahoma', 'MS Sans Serif', sans-serif;
+  font-size: 14px;
+}
+
+/* Interactive Window Enhancements */
+.window-dragging {
+  cursor: move !important;
+  user-select: none;
+}
+
+.window-content {
+  user-select: text;
+}
+
+/* XP Window Animations */
+.window-opening {
+  animation: windowOpen 0.2s ease-out;
+}
+
+@keyframes windowOpen {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.window-closing {
+  animation: windowClose 0.15s ease-in;
+}
+
+@keyframes windowClose {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* XP Desktop Icon Hover Effects */
+.desktop-icon:hover {
+  background: rgba(49, 106, 197, 0.2);
+  border: 1px dotted rgba(49, 106, 197, 0.5);
+}
+
+.desktop-icon:active {
+  background: rgba(49, 106, 197, 0.4);
+  border: 1px dotted #316ac5;
+}
+
+/* XP Taskbar Button States */
+.taskbar-button-active {
+  background: linear-gradient(to bottom, #4a90e2, #2e6da4) !important;
+  border: 1px inset #316ac5 !important;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.taskbar-button-inactive {
+  background: linear-gradient(to bottom, #6ba3d6, #4a90e2) !important;
+  border: 1px outset #5ba0d6 !important;
+}
+
+/* XP Window Focus States */
+.window-focused .window-titlebar {
+  background: linear-gradient(to right, #0a246a, #a6caf0) !important;
+}
+
+.window-unfocused .window-titlebar {
+  background: linear-gradient(to right, #7a7a7a, #c0c0c0) !important;
+}
+
+/* Disable text selection on UI elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* XP Button Press Effect */
+.xp-button-pressed {
+  background: linear-gradient(to bottom, #d4d0c8, #f0f0f0) !important;
+  border: 1px inset #d4d0c8 !important;
+  transform: translateY(1px);
+}
+
+/* Smooth transitions for window operations */
+.window-transition {
+  transition: all 0.2s ease-out;
+}
+
+/* XP-style resize cursor for window edges */
+.resize-cursor-nw { cursor: nw-resize; }
+.resize-cursor-ne { cursor: ne-resize; }
+.resize-cursor-sw { cursor: sw-resize; }
+.resize-cursor-se { cursor: se-resize; }
+.resize-cursor-n { cursor: n-resize; }
+.resize-cursor-s { cursor: s-resize; }
+.resize-cursor-e { cursor: e-resize; }
+.resize-cursor-w { cursor: w-resize; }

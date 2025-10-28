@@ -93,10 +93,21 @@ const ElectricBorder: React.FC<ElectricBorderProps> = ({
 
   useLayoutEffect(() => {
     if (!rootRef.current) return;
-    const ro = new ResizeObserver(() => updateAnim());
+    
+    // Throttle resize observer to reduce performance impact
+    let resizeTimeout: NodeJS.Timeout;
+    const throttledUpdate = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(updateAnim, 100);
+    };
+    
+    const ro = new ResizeObserver(throttledUpdate);
     ro.observe(rootRef.current);
     updateAnim();
-    return () => ro.disconnect();
+    return () => {
+      ro.disconnect();
+      clearTimeout(resizeTimeout);
+    };
   }, []);
 
   const inheritRadius: CSSProperties = {

@@ -69,7 +69,7 @@ uniform float uFade;
 #define EPS 1e-6
 #define EDGE_SOFT (DT_LOCAL*4.0)
 #define DT_LOCAL 0.0038
-#define TAP_RADIUS 6
+#define TAP_RADIUS 4
 #define R_H 150.0
 #define R_V 150.0
 #define FLARE_HEIGHT 16.0
@@ -99,7 +99,7 @@ uniform float uFade;
 #define FOG_CONTRAST 1.2
 #define FOG_SPEED_U 0.1
 #define FOG_SPEED_V -0.1
-#define FOG_OCTAVES 5
+#define FOG_OCTAVES 3
 #define FOG_BOTTOM_BIAS 0.8
 #define FOG_TILT_TO_MOUSE 0.05
 #define FOG_TILT_DEADZONE 0.01
@@ -336,13 +336,15 @@ export const LaserFlow: React.FC<Props> = ({
   const uniformsRef = useRef<any>(null);
   const hasFadedRef = useRef(false);
   const rectRef = useRef<DOMRect | null>(null);
-  const baseDprRef = useRef<number>(1);
-  const currentDprRef = useRef<number>(1);
+  const baseDprRef = useRef<number>(0.75); // Reduced from 1 for better performance
+  const currentDprRef = useRef<number>(0.75);
   const fpsSamplesRef = useRef<number[]>([]);
   const lastFpsCheckRef = useRef<number>(performance.now());
   const emaDtRef = useRef<number>(16.7); // ms
   const pausedRef = useRef<boolean>(false);
   const inViewRef = useRef<boolean>(true);
+  const frameSkipRef = useRef<number>(0);
+  const targetFpsRef = useRef<number>(30); // Target 30fps instead of 60fps
 
   const hexToRGB = (hex: string) => {
     let c = hex.trim();
@@ -368,8 +370,8 @@ export const LaserFlow: React.FC<Props> = ({
     });
 
     rendererRef.current = renderer;
-    baseDprRef.current = Math.min(dpr ?? (window.devicePixelRatio || 1), 2);
-    currentDprRef.current = baseDprRef.current;
+    baseDprRef.current = Math.min(dpr ?? (window.devicePixelRatio || 1), 1.5); // Reduced max DPR
+    currentDprRef.current = Math.min(baseDprRef.current, 0.75); // Start with lower DPR
     renderer.setPixelRatio(currentDprRef.current);
     renderer.shadowMap.enabled = false;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -541,6 +543,10 @@ export const LaserFlow: React.FC<Props> = ({
 
       if (pausedRef.current || !inViewRef.current) return;
 
+      // Frame skipping for performance - render every other frame
+      frameSkipRef.current++;
+      if (frameSkipRef.current % 2 !== 0) return;
+
       const t = clock.getElapsedTime();
       const dt = Math.max(0, t - prevTime);
       prevTime = t;
@@ -553,8 +559,8 @@ export const LaserFlow: React.FC<Props> = ({
       uniforms.iTime.value = t;
 
       const cdt = Math.min(0.033, Math.max(0.001, dt));
-      (uniforms.uFlowTime.value as number) += cdt;
-      (uniforms.uFogTime.value as number) += cdt;
+      (uniforms.uFlowTime.value as number) += cdt * 0.5; // Slower animation
+      (uniforms.uFogTime.value as number) += cdt * 0.5; // Slower animation
 
       if (!hasFadedRef.current) {
         const fadeDur = 1.0;
