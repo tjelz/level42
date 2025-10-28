@@ -2,7 +2,7 @@
 """
 Trading Bot Example
 
-This example demonstrates advanced x402-Agent Framework features:
+This example demonstrates advanced Level42 Framework features:
 - Deferred payment batching with multiple API calls
 - Portfolio management and spending tracking
 - Stock/crypto API integration with automatic payments
@@ -13,7 +13,7 @@ Requirements: 3.1, 3.2, 7.3
 import os
 import time
 from typing import Dict, List
-from x402_agent import X402Agent
+from level42 import Level42Agent
 
 
 class TradingLLMProvider:
@@ -38,7 +38,7 @@ class TradingBot:
     def __init__(self, private_key: str):
         """Initialize trading bot with wallet."""
         self.llm = TradingLLMProvider()
-        self.agent = X402Agent(self.llm, private_key, network="base")
+        self.agent = Level42Agent(self.llm, private_key, network="base")
         self.portfolio = {}
         self.spending_log = []
         

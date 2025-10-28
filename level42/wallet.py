@@ -1,5 +1,5 @@
 """
-Wallet management system for x402-Agent Framework.
+Wallet management system for Level42 Framework.
 
 This module provides cryptocurrency wallet integration and management
 for autonomous micropayments.

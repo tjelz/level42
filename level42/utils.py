@@ -1,5 +1,5 @@
 """
-Utility functions and helpers for x402-Agent Framework.
+Utility functions and helpers for Level42 Framework.
 
 This module provides common utilities, validation functions,
 and helper classes used throughout the framework.
@@ -157,7 +157,7 @@ def parse_http_402_headers(headers: Dict[str, str]) -> Dict[str, Any]:
     """
     payment_info = {}
     
-    # Standard x402 headers
+    # Standard L42 headers
     if 'X-Payment-Required' in headers:
         payment_info['required'] = True
     

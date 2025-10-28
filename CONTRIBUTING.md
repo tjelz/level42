@@ -176,12 +176,12 @@ tests/
 import pytest
 from unittest.mock import Mock, patch
 
-from x402_agent import X402Agent
-from x402_agent.exceptions import InsufficientFundsError
+from level42 import Level42Agent
+from level42.exceptions import InsufficientFundsError
 
 
-class TestX402Agent:
-    """Test cases for X402Agent class."""
+class TestLevel42Agent:
+    """Test cases for Level42Agent class."""
     
     @pytest.fixture
     def mock_llm(self):
@@ -193,7 +193,7 @@ class TestX402Agent:
     @pytest.fixture
     def agent(self, mock_llm):
         """Create test agent."""
-        return X402Agent(
+        return Level42Agent(
             llm=mock_llm,
             wallet_key="0x" + "1" * 64,
             network="base"
@@ -375,7 +375,7 @@ x402_agent/
 1. **Network Support**: Implement `NetworkProvider` interface
 2. **Payment Methods**: Extend `PaymentProcessor` class
 3. **Tool Types**: Add new tool types to `ToolRegistry`
-4. **Agent Behaviors**: Extend `X402Agent` class
+4. **Agent Behaviors**: Extend `Level42Agent` class
 
 ## 🔒 Security Guidelines
 

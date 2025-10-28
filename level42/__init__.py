@@ -1,20 +1,20 @@
 """
-x402-Agent Framework
+Level42 Framework
 
 A lightweight Python framework for building autonomous AI agents that can pay for tools, 
-APIs, and other agents in real-time using x402 micropayments.
+APIs, and other agents in real-time using L42 micropayments.
 """
 
 __version__ = "0.1.0"
-__author__ = "x402-Agent Framework Team"
+__author__ = "Level42 Framework Team"
 
-from .agent import X402Agent
+from .agent import Level42Agent
 from .wallet import WalletManager
 from .payments import PaymentProcessor
 from .tools import Tool, ToolRegistry
 from .swarm import AgentSwarm
 from .exceptions import (
-    X402AgentError,
+    Level42Error,
     PaymentError,
     InsufficientFundsError,
     NetworkError,
@@ -37,14 +37,14 @@ from .exceptions import (
 )
 
 __all__ = [
-    "X402Agent",
+    "Level42Agent",
     "WalletManager", 
     "PaymentProcessor",
     "Tool",
     "ToolRegistry",
     "AgentSwarm",
     # Exceptions
-    "X402AgentError",
+    "Level42Error",
     "PaymentError",
     "InsufficientFundsError",
     "NetworkError",

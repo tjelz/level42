@@ -1,17 +1,17 @@
 """
-Custom exceptions for x402-Agent Framework.
+Custom exceptions for Level42 Framework.
 
 This module defines all custom exceptions used throughout the framework
 for consistent error handling and reporting.
 """
 
 
-class X402AgentError(Exception):
-    """Base exception for all x402-Agent Framework errors."""
+class Level42Error(Exception):
+    """Base exception for all Level42 Framework errors."""
     pass
 
 
-class PaymentError(X402AgentError):
+class PaymentError(Level42Error):
     """Base exception for payment-related errors."""
     pass
 
@@ -51,7 +51,7 @@ class PaymentValidationError(PaymentError):
     pass
 
 
-class ToolError(X402AgentError):
+class ToolError(Level42Error):
     """Base exception for tool-related errors."""
     pass
 
@@ -69,7 +69,7 @@ class ToolExecutionError(ToolError):
         self.tool_name = tool_name
 
 
-class AgentError(X402AgentError):
+class AgentError(Level42Error):
     """Base exception for agent-related errors."""
     pass
 
@@ -79,7 +79,7 @@ class AgentConfigurationError(AgentError):
     pass
 
 
-class SwarmError(X402AgentError):
+class SwarmError(Level42Error):
     """Base exception for swarm-related errors."""
     pass
 
@@ -89,7 +89,7 @@ class SwarmCoordinationError(SwarmError):
     pass
 
 
-class WalletError(X402AgentError):
+class WalletError(Level42Error):
     """Base exception for wallet-related errors."""
     pass
 
@@ -104,7 +104,7 @@ class InvalidPrivateKeyError(WalletError):
     pass
 
 
-class HTTP402Error(X402AgentError):
+class HTTP402Error(Level42Error):
     """Raised when HTTP 402 response cannot be processed."""
     
     def __init__(self, message: str = "HTTP 402 processing failed", status_code: int = 402, headers: dict = None):
@@ -113,17 +113,17 @@ class HTTP402Error(X402AgentError):
         self.headers = headers or {}
 
 
-class ConfigurationError(X402AgentError):
+class ConfigurationError(Level42Error):
     """Raised when configuration is invalid or missing."""
     pass
 
 
-class AuthenticationError(X402AgentError):
+class AuthenticationError(Level42Error):
     """Raised when authentication fails."""
     pass
 
 
-class RateLimitError(X402AgentError):
+class RateLimitError(Level42Error):
     """Raised when rate limits are exceeded."""
     
     def __init__(self, message: str = "Rate limit exceeded", retry_after: int = None):

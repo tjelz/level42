@@ -1,5 +1,5 @@
 """
-Solana network provider for x402-Agent Framework.
+Solana network provider for Level42 Framework.
 
 This module provides Solana blockchain integration for micropayments
 using SOL and SPL tokens.

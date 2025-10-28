@@ -14,7 +14,7 @@ Requirements: 4.1, 4.3, 4.4
 import os
 import time
 from typing import Dict, List, Any
-from x402_agent import X402Agent, AgentSwarm
+from level42 import Level42Agent, AgentSwarm
 
 
 class ResearchLLMProvider:
@@ -71,7 +71,7 @@ class ResearchSwarm:
             llm = ResearchLLMProvider(specialty)
             
             # Create agent
-            agent = X402Agent(llm, private_key, network="base")
+            agent = Level42Agent(llm, private_key, network="base")
             
             # Add custom attributes for research specialization
             agent.specialty = specialty

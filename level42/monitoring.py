@@ -1,5 +1,5 @@
 """
-Debugging and monitoring tools for x402-Agent Framework.
+Debugging and monitoring tools for Level42 Framework.
 
 This module provides comprehensive logging, debugging modes, and usage analytics
 for monitoring agent behavior and payment activities.
@@ -27,9 +27,9 @@ class DebugConfig:
     verbose_errors: bool = True
 
 
-class X402Logger:
+class Level42Logger:
     """
-    Centralized logging system for x402-Agent Framework.
+    Centralized logging system for Level42 Framework.
     
     Provides structured logging with different levels and categories
     for comprehensive monitoring and debugging.
@@ -48,7 +48,7 @@ class X402Logger:
     
     def _setup_logger(self) -> logging.Logger:
         """Set up logging configuration based on debug settings."""
-        logger = logging.getLogger("x402_agent")
+        logger = logging.getLogger("level42")
         
         # Clear existing handlers
         logger.handlers.clear()
@@ -81,7 +81,7 @@ class X402Logger:
     def _log_session_start(self):
         """Log session start information."""
         self.logger.info("=" * 50)
-        self.logger.info("x402-Agent Framework Session Started")
+        self.logger.info("Level42 Framework Session Started")
         self.logger.info(f"Debug Mode: {'ENABLED' if self.debug_config.enabled else 'DISABLED'}")
         self.logger.info(f"Log Level: {self.debug_config.log_level}")
         self.logger.info("=" * 50)
@@ -231,13 +231,13 @@ class X402Logger:
 
 class UsageAnalytics:
     """
-    Usage analytics and reporting system for x402-Agent Framework.
+    Usage analytics and reporting system for Level42 Framework.
     
     Provides comprehensive analytics on agent spending, tool usage,
     and performance metrics.
     """
     
-    def __init__(self, db_path: str = "x402_analytics.db"):
+    def __init__(self, db_path: str = "level42_analytics.db"):
         """
         Initialize analytics system.
         
@@ -574,7 +574,7 @@ def debug_mode(config: DebugConfig = None):
             agent.run("some task")
     """
     config = config or DebugConfig(enabled=True)
-    logger = X402Logger(config)
+    logger = Level42Logger(config)
     
     try:
         yield logger

@@ -27,7 +27,7 @@ class SwarmConfig:
 
 class AgentSwarm:
     """
-    Coordinates multiple x402-Agents for collaborative tasks.
+    Coordinates multiple Level42 Agents for collaborative tasks.
     
     Enables multiple agents to work together, share costs, and
     coordinate their activities for complex multi-agent scenarios.
@@ -49,7 +49,7 @@ class AgentSwarm:
                 config.shared_wallet = shared_wallet
             
         self.config = config
-        self.agents: Dict[str, Any] = {}  # Will be X402Agent instances
+        self.agents: Dict[str, Any] = {}  # Will be Level42Agent instances
         self.agent_spending: Dict[str, float] = {}
         self.swarm_id = f"swarm_{id(self)}"
         self.shared_wallet_manager = None
@@ -59,12 +59,12 @@ class AgentSwarm:
             # Shared wallet will be set when first agent is added
             pass
     
-    def add_agent(self, agent: Any) -> None:  # agent: X402Agent
+    def add_agent(self, agent: Any) -> None:  # agent: Level42Agent
         """
         Add agent to swarm membership.
         
         Args:
-            agent: X402Agent instance to add
+            agent: Level42Agent instance to add
             
         Raises:
             ValueError: If swarm is at capacity or agent already exists

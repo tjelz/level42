@@ -1,16 +1,16 @@
-# x402-Agent Framework
+# Level42 Framework
 
-[![PyPI version](https://badge.fury.io/py/x402-agent.svg)](https://badge.fury.io/py/x402-agent)
-[![Python Support](https://img.shields.io/pypi/pyversions/x402-agent.svg)](https://pypi.org/project/x402-agent/)
+[![PyPI version](https://badge.fury.io/py/level42.svg)](https://badge.fury.io/py/level42)
+[![Python Support](https://img.shields.io/pypi/pyversions/level42.svg)](https://pypi.org/project/level42/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![CI](https://github.com/x402-agent/x402-agent-framework/workflows/CI/badge.svg)](https://github.com/x402-agent/x402-agent-framework/actions)
-[![codecov](https://codecov.io/gh/x402-agent/x402-agent-framework/branch/main/graph/badge.svg)](https://codecov.io/gh/x402-agent/x402-agent-framework)
+[![CI](https://github.com/level42-ai/level42-framework/workflows/CI/badge.svg)](https://github.com/level42-ai/level42-framework/actions)
+[![codecov](https://codecov.io/gh/level42-ai/level42-framework/branch/main/graph/badge.svg)](https://codecov.io/gh/level42-ai/level42-framework)
 
-A lightweight Python framework for building autonomous AI agents that can pay for tools, APIs, and other agents in real-time using x402 micropayments.
+A lightweight Python framework for building autonomous AI agents that can pay for tools, APIs, and other agents in real-time using L42 micropayments.
 
 ## 🚀 Overview
 
-The x402-Agent Framework eliminates API key management and subscription friction by enabling pay-per-use interactions through HTTP 402 status codes and USDC payments on blockchain networks. Build agents that can autonomously discover, pay for, and use external services without manual intervention.
+The Level42 Framework eliminates API key management and subscription friction by enabling pay-per-use interactions through HTTP 402 status codes and USDC payments on blockchain networks. Build agents that can autonomously discover, pay for, and use external services without manual intervention.
 
 ## ✨ Features
 
@@ -29,30 +29,30 @@ The x402-Agent Framework eliminates API key management and subscription friction
 ### Basic Installation
 
 ```bash
-pip install x402-agent
+pip install level42
 ```
 
 ### With Optional Dependencies
 
 ```bash
 # Include Solana support
-pip install x402-agent[solana]
+pip install level42[solana]
 
 # Include development tools
-pip install x402-agent[dev]
+pip install level42[dev]
 
 # Include documentation tools
-pip install x402-agent[docs]
+pip install level42[docs]
 
 # Install everything
-pip install x402-agent[solana,dev,docs]
+pip install level42[solana,dev,docs]
 ```
 
 ### Development Installation
 
 ```bash
-git clone https://github.com/x402-agent/x402-agent-framework.git
-cd x402-agent-framework
+git clone https://github.com/level42-ai/level42-framework.git
+cd level42-framework
 pip install -e ".[dev]"
 ```
 
@@ -61,14 +61,14 @@ pip install -e ".[dev]"
 ### Basic Agent
 
 ```python
-from x402_agent import X402Agent
+from level42 import Level42Agent
 from langchain_openai import ChatOpenAI
 
 # Initialize your LLM
 llm = ChatOpenAI(model="gpt-4")
 
 # Create an agent with your wallet
-agent = X402Agent(
+agent = Level42Agent(
     llm=llm, 
     wallet_key="your_base_network_private_key"
 )
@@ -88,13 +88,13 @@ print(result)
 ### Multi-Agent Swarm
 
 ```python
-from x402_agent import X402Agent, AgentSwarm
+from level42 import Level42Agent, AgentSwarm
 from langchain_openai import ChatOpenAI
 
 # Create multiple agents
 llm = ChatOpenAI(model="gpt-4")
-agent1 = X402Agent(llm=llm, wallet_key="key1")
-agent2 = X402Agent(llm=llm, wallet_key="key2")
+agent1 = Level42Agent(llm=llm, wallet_key="key1")
+agent2 = Level42Agent(llm=llm, wallet_key="key2")
 
 # Create a swarm with shared wallet
 swarm = AgentSwarm(shared_wallet=True)
@@ -108,9 +108,9 @@ result = swarm.collaborate("Research the latest AI developments and summarize fi
 ### Deferred Payment Batching
 
 ```python
-from x402_agent import X402Agent, PaymentProcessor
+from level42 import Level42Agent, PaymentProcessor
 
-agent = X402Agent(llm=llm, wallet_key="your_key")
+agent = Level42Agent(llm=llm, wallet_key="your_key")
 
 # Configure deferred payments (batches after 10 calls)
 processor = PaymentProcessor(agent.wallet_manager)
@@ -125,7 +125,7 @@ for i in range(15):
 
 ### Complete Documentation Available
 
-Visit our comprehensive documentation at **[docs.x402-agent.dev](https://docs.x402-agent.dev)** for:
+Visit our comprehensive documentation at **[docs.level42.dev](https://docs.level42.dev)** for:
 
 - **[Getting Started Guide](docs/guides/getting-started.md)** - Complete setup and first steps
 - **[API Reference](docs/api/)** - Detailed API documentation for all classes
@@ -136,12 +136,12 @@ Visit our comprehensive documentation at **[docs.x402-agent.dev](https://docs.x4
 
 ### Quick API Reference
 
-#### X402Agent - Main Agent Class
+#### Level42Agent - Main Agent Class
 
 ```python
-from x402_agent import X402Agent
+from level42 import Level42Agent
 
-agent = X402Agent(
+agent = Level42Agent(
     llm=your_llm,                    # LangChain-compatible LLM
     wallet_key="0x...",              # Private key for payments
     network="base",                  # Blockchain network
@@ -162,7 +162,7 @@ agent.transfer_to_agent("other_agent", 5.0)
 #### AgentSwarm - Multi-Agent Coordination
 
 ```python
-from x402_agent.swarm import AgentSwarm
+from level42.swarm import AgentSwarm
 
 swarm = AgentSwarm(shared_wallet=True, cost_splitting="equal")
 swarm.add_agent(researcher, "researcher")
@@ -182,7 +182,7 @@ swarm.transfer_funds("agent1", "agent2", 10.0)
 #### WalletManager - Cryptocurrency Operations
 
 ```python
-from x402_agent.wallet import WalletManager
+from level42.wallet import WalletManager
 
 wallet = WalletManager("0xprivate_key...", network="base")
 
@@ -206,18 +206,18 @@ For complete API documentation with all methods, parameters, and examples, visit
 
 ```bash
 # Optional: Set default network
-export X402_DEFAULT_NETWORK=base
+export LEVEL42_DEFAULT_NETWORK=base
 
 # Optional: Set default spending limits
-export X402_MAX_SPEND_PER_HOUR=10.0
+export LEVEL42_MAX_SPEND_PER_HOUR=10.0
 
 # Optional: Enable debug logging
-export X402_DEBUG=true
+export LEVEL42_DEBUG=true
 ```
 
 ### Configuration File
 
-Create `~/.x402/config.yaml`:
+Create `~/.level42/config.yaml`:
 
 ```yaml
 default_network: base
@@ -254,11 +254,11 @@ networks:
 ### Simple Trading Bot
 
 ```python
-from x402_agent import X402Agent
+from level42 import Level42Agent
 from langchain_openai import ChatOpenAI
 
 # Create trading agent
-agent = X402Agent(
+agent = Level42Agent(
     llm=ChatOpenAI(model="gpt-4"),
     wallet_key="your_key",
     max_spend_per_hour=50.0
@@ -279,12 +279,12 @@ recommend a trading strategy.
 ### Research Swarm
 
 ```python
-from x402_agent import X402Agent, AgentSwarm
+from level42 import Level42Agent, AgentSwarm
 
 # Create specialized research agents
-researcher = X402Agent(llm=llm, wallet_key="key1")
-analyst = X402Agent(llm=llm, wallet_key="key2")
-writer = X402Agent(llm=llm, wallet_key="key3")
+researcher = Level42Agent(llm=llm, wallet_key="key1")
+analyst = Level42Agent(llm=llm, wallet_key="key2")
+writer = Level42Agent(llm=llm, wallet_key="key3")
 
 # Register different tools for each agent
 researcher.register_tool("arxiv", "https://api.arxiv.org/search")
@@ -377,7 +377,7 @@ print(f"Wallet address: {wallet.address}")
 #### "Network connection failed" Error
 ```python
 # Check network configuration
-agent = X402Agent(
+agent = Level42Agent(
     llm=llm,
     wallet_key="your_key",
     network="base"  # or "solana"
@@ -410,7 +410,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 
 # Create agent with debug mode
-agent = X402Agent(
+agent = Level42Agent(
     llm=llm,
     wallet_key="your_key",
     debug=True
@@ -424,7 +424,7 @@ agent.payment_processor.enable_logging()
 
 ```python
 # Optimize for high-frequency trading
-agent = X402Agent(
+agent = Level42Agent(
     llm=llm,
     wallet_key="your_key",
     deferred_payment_threshold=50,  # Batch more payments
@@ -479,8 +479,8 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ```bash
 # Clone the repository
-git clone https://github.com/x402-agent/x402-agent-framework.git
-cd x402-agent-framework
+git clone https://github.com/level42-ai/level42-framework.git
+cd level42-framework
 
 # Install in development mode
 pip install -e ".[dev]"
@@ -493,7 +493,7 @@ make test
 
 ### Reporting Issues
 
-Please report bugs and feature requests on our [GitHub Issues](https://github.com/x402-agent/x402-agent-framework/issues) page.
+Please report bugs and feature requests on our [GitHub Issues](https://github.com/level42-ai/level42-framework/issues) page.
 
 ## 📄 License
 
@@ -510,9 +510,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### CA (Contract Address) - Coming Soon! 🚀
 
-The x402-Agent Framework will soon launch its native utility token to power the ecosystem:
+The Level42 Framework will soon launch its native utility token to power the ecosystem:
 
-- **Token Symbol**: X402
+- **Token Symbol**: L42
 - **Network**: Base Network (Primary), Multi-chain expansion planned
 - **Use Cases**: 
   - Governance and protocol upgrades
@@ -527,13 +527,13 @@ Join our community channels below to be the first to know about the CA release a
 
 ## 🔗 Links
 
-- **Documentation**: https://docs.x402-agent.dev
-- **PyPI Package**: https://pypi.org/project/x402-agent/
-- **GitHub Repository**: https://github.com/x402-agent/x402-agent-framework
-- **Discord Community**: https://discord.gg/x402-agent
-- **Twitter**: https://twitter.com/x402agent
-- **Telegram**: https://t.me/x402agent
-- **Medium Blog**: https://medium.com/@x402agent
+- **Documentation**: https://docs.level42.dev
+- **PyPI Package**: https://pypi.org/project/level42/
+- **GitHub Repository**: https://github.com/level42-ai/level42-framework
+- **Discord Community**: https://discord.gg/level42
+- **Twitter**: https://twitter.com/level42ai
+- **Telegram**: https://t.me/level42ai
+- **Medium Blog**: https://medium.com/@level42ai
 
 ## 🏆 Roadmap
 
@@ -545,7 +545,7 @@ Join our community channels below to be the first to know about the CA release a
 - 🔄 Enhanced documentation and tutorials
 
 ### Q1 2025
-- 🔮 Native X402 token launch
+- 🔮 Native L42 token launch
 - 🔮 Agent marketplace beta
 - 🔮 Ethereum Network support
 - 🔮 Advanced analytics dashboard
@@ -567,6 +567,6 @@ Join our community channels below to be the first to know about the CA release a
 
 ---
 
-**Built with ❤️ by the x402-Agent team**
+**Built with ❤️ by the Level42 team**
 
 *Empowering the future of autonomous AI through seamless micropayments*

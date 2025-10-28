@@ -3,16 +3,16 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "x402-agent"
+name = "level42"
 dynamic = ["version"]
 description = "A lightweight Python framework for building autonomous AI agents with micropayment capabilities"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    {name = "x402-Agent Framework Team", email = "team@x402-agent.dev"}
+    {name = "Level42 Framework Team", email = "team@level42.dev"}
 ]
 maintainers = [
-    {name = "x402-Agent Framework Team", email = "team@x402-agent.dev"}
+    {name = "Level42 Framework Team", email = "team@level42.dev"}
 ]
 keywords = [
     "ai",
@@ -24,7 +24,9 @@ keywords = [
     "automation",
     "web3",
     "usdc",
-    "base"
+    "base",
+    "level42",
+    "l42"
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -71,22 +73,22 @@ docs = [
 ]
 
 [project.scripts]
-x402-agent = "x402_agent.cli:main"
+level42 = "level42.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/x402-agent/x402-agent-framework"
-Documentation = "https://docs.x402-agent.dev"
-Repository = "https://github.com/x402-agent/x402-agent-framework"
-"Bug Reports" = "https://github.com/x402-agent/x402-agent-framework/issues"
+Homepage = "https://github.com/level42-ai/level42-framework"
+Documentation = "https://docs.level42.dev"
+Repository = "https://github.com/level42-ai/level42-framework"
+"Bug Reports" = "https://github.com/level42-ai/level42-framework/issues"
 
 [tool.setuptools]
-packages = ["x402_agent"]
+packages = ["level42"]
 
 [tool.setuptools.dynamic]
-version = {attr = "x402_agent.__version__"}
+version = {attr = "level42.__version__"}
 
 [tool.setuptools.package-data]
-x402_agent = ["py.typed"]
+level42 = ["py.typed"]
 
 [tool.black]
 line-length = 88
@@ -130,7 +132,7 @@ python_classes = ["Test*"]
 python_functions = ["test_*"]
 
 [tool.coverage.run]
-source = ["x402_agent"]
+source = ["level42"]
 omit = [
     "*/tests/*",
     "*/test_*",

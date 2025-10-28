@@ -56,10 +56,10 @@ A stunning, high-tech promotional website for the x402-Agent Framework - showcas
 
 ## 🔗 Links Included
 
-- **GitHub**: https://github.com/x402-agent/x402-agent-framework
-- **Twitter**: https://twitter.com/x402agent
-- **Documentation**: https://docs.x402-agent.dev
-- **Discord**: https://discord.gg/x402-agent
+- **GitHub**: https://github.com/level42-ai/level42-framework
+- **Twitter**: https://twitter.com/level42ai
+- **Documentation**: https://docs.level42.dev
+- **Discord**: https://discord.gg/level42
 
 ## 🎯 Token Launch Ready
 

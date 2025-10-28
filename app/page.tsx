@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import AnimatedCounter from './components/AnimatedCounter';
+
 import LaserFlow from './components/LaserFlow';
 import ElectricBorder from './components/ElectricBorder';
 import GlowText from './components/GlowText';
@@ -42,15 +42,15 @@ export default function Home() {
         : 'opacity-0 -translate-y-4 pointer-events-none'
         }`}>
         <div className="flex items-center space-x-4">
-          <a href="https://github.com/x402-agent/x402-agent-framework"
-            className="w-12 h-12 bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-black/80 hover:border-white/20 shadow-2xl"
+          <a href="https://github.com/level42-ai/level42-framework"
+            className="w-18 h-18 bg-[#1f1f1f] backdrop-blur-xl border border-white/10 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-black/80 hover:border-white/20 shadow-2xl magnetic-hover glow-on-hover"
             title="GitHub">
             <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
             </svg>
           </a>
-          <a href="https://twitter.com/x402agent"
-            className="w-12 h-12 bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-black/80 hover:border-white/20 shadow-2xl"
+          <a href="https://twitter.com/level42ai"
+            className="w-18 h-18 bg-[#1f1f1f] backdrop-blur-xl border border-white/10 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-black/80 hover:border-white/20 shadow-2xl magnetic-hover glow-on-hover"
             title="Twitter">
             <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
               <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
@@ -83,17 +83,20 @@ export default function Home() {
           />
         </div>
 
+        {/* Floating particles */}
+        <div className="floating-particles"></div>
+
         {/* Glass Container Box - Positioned at bottom */}
         <div className="absolute left-6 right-6 z-20 top-[50vh] md:top-[50vh] lg:top-[50vh]">
           <div className="max-w-6xl mx-auto">
-            <div className="bg-black/20 backdrop-blur-sm border-2 border-purple-400/30 rounded-3xl p-12 shadow-2xl">
+            <div className="bg-black/20 backdrop-blur-sm border-2 border-purple-400/30 rounded-3xl p-12 shadow-2xl glow-on-hover border-pulse">
               <div className="text-center animate-fade-in">
                 {/* Main Title */}
-                <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight">
-                  <GlowText className="text-5xl md:text-7xl font-black block">
-                    Autonomous AI
+                <h1 className="text-5xl md:text-7xl font-display mb-8 leading-tight">
+                  <GlowText className="text-5xl md:text-7xl font-display block text-shimmer mb-6">
+                    level42
                   </GlowText>
-                  <GlowText className="text-5xl md:text-7xl font-black block mt-2">
+                  <GlowText className="text-3xl md:text-5xl font-display block mt-2 text-shimmer">
                     Agents That Pay
                   </GlowText>
                 </h1>
@@ -110,10 +113,10 @@ export default function Home() {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
-                  <a href="https://github.com/x402-agent/x402-agent-framework" className="group px-10 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-xl text-lg font-black hover:scale-105 transition-all duration-300 shadow-xl border border-white/20 hover:border-white/40">
+                  <a href="https://github.com/level42-ai/level42-framework" className="group px-10 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-xl text-lg font-black hover:scale-105 transition-all duration-300 shadow-xl border border-white/20 hover:border-white/40">
                     <span className="relative z-10 text-white">GitHub</span>
                   </a>
-                  <a href="https://github.com/x402-agent/x402-agent-framework/tree/main/docs" className="px-10 py-4 border-2 border-purple-400/60 rounded-xl text-lg font-black hover:bg-purple-500/20 hover:border-purple-300 transition-all duration-300 backdrop-blur-xl bg-black/40 shadow-xl text-white">
+                  <a href="https://github.com/level42-ai/level42-framework/tree/main/docs" className="px-10 py-4 border-2 border-purple-400/60 rounded-xl text-lg font-black hover:bg-purple-500/20 hover:border-purple-300 transition-all duration-300 backdrop-blur-xl bg-black/40 shadow-xl text-white">
                     View Docs
                   </a>
                 </div>
@@ -124,10 +127,13 @@ export default function Home() {
       </section>
       {/* Features Section */}
       <section className="relative z-10 py-20 px-6">
-        <div className="max-w-7xl mx-auto">
+        {/* Background pattern */}
+        <div className="absolute inset-0 pattern-dots opacity-30"></div>
+
+        <div className="max-w-7xl mx-auto relative">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-black mb-6">
-              <GlowText className="text-4xl md:text-6xl font-black">
+            <h2 className="text-4xl md:text-6xl font-display mb-6">
+              <GlowText className="text-4xl md:text-6xl font-display text-shimmer">
                 Revolutionary Architecture
               </GlowText>
             </h2>
@@ -225,9 +231,9 @@ export default function Home() {
                 chaos={0.6}
                 thickness={2}
                 style={{ borderRadius: 20 }}
-                className="group hover:scale-105 transition-all duration-300"
+                className="group hover:scale-105 transition-all duration-300 magnetic-hover"
               >
-                <div className="relative bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 backdrop-blur-xl rounded-[20px] border border-white/5 shadow-2xl overflow-hidden">
+                <div className="relative bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 backdrop-blur-xl rounded-[20px] border border-white/5 shadow-2xl overflow-hidden glow-on-hover">
                   {/* Icon Header Section */}
                   <div className="relative h-32 bg-gradient-to-br from-gray-800/90 to-gray-900/90 flex items-center justify-center overflow-hidden">
                     {/* Header background pattern */}
@@ -264,7 +270,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-black/20 pointer-events-none"></div>
 
                     <div className="relative z-10">
-                      <h3 className="text-xl font-bold mb-4 text-white group-hover:text-white transition-colors duration-300">
+                      <h3 className="text-xl font-display font-bold mb-4 text-white group-hover:text-white transition-colors duration-300 glitch-effect">
                         {feature.title}
                       </h3>
                       <p className="text-gray-400 leading-relaxed text-sm group-hover:text-gray-300 transition-colors duration-300">
@@ -284,10 +290,13 @@ export default function Home() {
 
       {/* Code Example Section */}
       <section className="relative z-10 py-20 px-6">
+        {/* Floating particles for this section */}
+        <div className="floating-particles"></div>
+
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-black mb-6">
-              <GlowText className="text-4xl md:text-6xl font-black">
+            <h2 className="text-4xl md:text-6xl font-display mb-6">
+              <GlowText className="text-4xl md:text-6xl font-display text-shimmer">
                 Developer Experience
               </GlowText>
             </h2>
@@ -297,25 +306,25 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="bg-gray-900/80 rounded-2xl p-8 border border-gray-700/50 backdrop-blur-sm">
+          <div className="bg-gray-900/80 rounded-2xl p-8 border border-gray-700/50 backdrop-blur-sm glow-on-hover border-pulse">
             <div className="flex items-center justify-between mb-6">
               <div className="flex space-x-2">
                 <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                 <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
               </div>
-              <span className="text-gray-400 text-sm">main.py</span>
+              <span className="text-gray-400 text-sm font-mono">main.py</span>
             </div>
             <ScrollTypewriter
-              className="text-green-400 text-sm md:text-base overflow-x-auto"
-              code={`from x402_agent import X402Agent
+              className="text-green-400 text-sm md:text-base overflow-x-auto font-mono"
+              code={`from level42 import Level42Agent
 from langchain_openai import ChatOpenAI
 
 # Initialize your LLM
 llm = ChatOpenAI(model="gpt-4")
 
 # Create an agent with your wallet
-agent = X402Agent(
+agent = Level42Agent(
     llm=llm, 
     wallet_key="your_base_network_private_key"
 )
@@ -349,11 +358,11 @@ print(result)`}
         <div className="max-w-6xl mx-auto relative z-10 text-center">
           {/* Dramatic headline */}
           <div className="mb-20">
-            <GlowText className="text-6xl md:text-8xl font-black mb-8 leading-tight">
+            <GlowText className="text-6xl md:text-8xl font-display mb-8 leading-tight text-shimmer breathe-animation">
               The Last API Key
             </GlowText>
             <br />
-            <GlowText className="text-6xl md:text-8xl font-black mb-12 leading-tight">
+            <GlowText className="text-6xl md:text-8xl font-display mb-12 leading-tight text-shimmer breathe-animation">
               You'll Ever Need
             </GlowText>
           </div>
@@ -363,8 +372,8 @@ print(result)`}
             <div className="relative ">
 
               <div className="relative z-10 p-16 text-center">
-                <GlowText className="text-5xl md:text-6xl font-black mb-12">
-                  CA COMING SOON
+                <GlowText className="text-5xl md:text-6xl font-display mb-12 glitch-effect typewriter-cursor">
+                  L42 CA COMING SOON
                 </GlowText>
 
               </div>
@@ -372,125 +381,6 @@ print(result)`}
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="relative z-10 overflow-hidden">
-        {/* Background effects */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900/50 to-transparent"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(168,85,247,0.1),transparent_50%)]"></div>
-
-        <div className="relative z-10 py-20 px-6">
-          <div className="max-w-7xl mx-auto">
-            {/* Main footer content */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
-
-              {/* Brand section */}
-              <div className="lg:col-span-1">
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg">
-                    <span className="text-black font-black text-lg">X4</span>
-                  </div>
-                  <GlowText className="text-2xl font-black">
-                    x402-Agent
-                  </GlowText>
-                </div>
-                <p className="text-gray-400 leading-relaxed mb-6 max-w-md">
-                  The first autonomous AI agent framework with built-in blockchain micropayments.
-                  Revolutionizing how AI systems interact with APIs and services.
-                </p>
-                <div className="flex space-x-4">
-                  <a href="https://github.com/x402-agent/x402-agent-framework"
-                    className="w-12 h-12 bg-gray-800/80 hover:bg-gray-700/80 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 border border-gray-700/50 hover:border-gray-600/50">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                  </a>
-                  <a href="https://twitter.com/x402agent"
-                    className="w-12 h-12 bg-gray-800/80 hover:bg-gray-700/80 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 border border-gray-700/50 hover:border-gray-600/50">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                    </svg>
-                  </a>
-                  <a href="https://discord.gg/x402-agent"
-                    className="w-12 h-12 bg-gray-800/80 hover:bg-gray-700/80 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 border border-gray-700/50 hover:border-gray-600/50">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-
-              {/* Quick links */}
-              <div className="lg:col-span-1">
-                <h3 className="text-xl font-bold text-white mb-6">Resources</h3>
-                <div className="space-y-4">
-                  <a href="https://docs.x402-agent.dev"
-                    className="block text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-2 transform">
-                    Documentation
-                  </a>
-                  <a href="https://github.com/x402-agent/x402-agent-framework/tree/main/examples"
-                    className="block text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-2 transform">
-                    Examples
-                  </a>
-                  <a href="https://github.com/x402-agent/x402-agent-framework/tree/main/docs/api"
-                    className="block text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-2 transform">
-                    API Reference
-                  </a>
-                  <a href="https://github.com/x402-agent/x402-agent-framework/blob/main/CONTRIBUTING.md"
-                    className="block text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-2 transform">
-                    Contributing
-                  </a>
-                </div>
-              </div>
-
-              {/* Status & updates */}
-              <div className="lg:col-span-1">
-                <h3 className="text-xl font-bold text-white mb-6">Status</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-gray-400">Framework: Live</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
-                    <span className="text-gray-400">Token: Coming Soon</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
-                    <span className="text-gray-400">Mainnet: Q1 2025</span>
-                  </div>
-                </div>
-
-                <div className="mt-8 p-4 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700/50">
-                  <div className="text-sm text-gray-400 mb-2">Latest Release</div>
-                  <div className="text-white font-bold">v0.1.0</div>
-                  <div className="text-xs text-gray-500 mt-1">Framework Core</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom section */}
-            <div className="pt-8 border-t border-gray-800/50">
-              <div className="flex flex-col md:flex-row items-center justify-between">
-                <div className="text-gray-400 text-sm mb-4 md:mb-0">
-                  © 2024 x402-Agent Framework. Built for the future of autonomous AI.
-                </div>
-                <div className="flex items-center space-x-6 text-sm">
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
-                    Privacy Policy
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
-                    Terms of Service
-                  </a>
-                  <a href="https://github.com/x402-agent/x402-agent-framework/blob/main/LICENSE" className="text-gray-400 hover:text-white transition-colors duration-300">
-                    MIT License
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

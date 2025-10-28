@@ -1,8 +1,8 @@
 """
-Setup configuration for x402-Agent Framework.
+Setup configuration for Level42 Framework.
 
 A lightweight Python framework for building autonomous AI agents that can pay for tools,
-APIs, and other agents in real-time using x402 micropayments.
+APIs, and other agents in real-time using L42 micropayments.
 """
 
 from setuptools import setup, find_packages
@@ -21,7 +21,7 @@ def get_version():
     import re
     
     here = os.path.abspath(os.path.dirname(__file__))
-    version_file = os.path.join(here, "x402_agent", "__init__.py")
+    version_file = os.path.join(here, "level42", "__init__.py")
     
     with open(version_file, "r", encoding="utf-8") as f:
         version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", f.read(), re.M)
@@ -33,14 +33,14 @@ def get_version():
 version = get_version()
 
 setup(
-    name="x402-agent",
+    name="level42",
     version=version,
-    author="x402-Agent Framework Team",
-    author_email="team@x402-agent.dev",
+    author="Level42 Framework Team",
+    author_email="team@level42.dev",
     description="A lightweight Python framework for building autonomous AI agents with micropayment capabilities",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/x402-agent/x402-agent-framework",
+    url="https://github.com/level42-ai/level42-framework",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -87,12 +87,12 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "x402-agent=x402_agent.cli:main",
+            "level42=level42.cli:main",
         ],
     },
     include_package_data=True,
     package_data={
-        "x402_agent": ["py.typed"],
+        "level42": ["py.typed"],
     },
     keywords=[
         "ai",
@@ -105,10 +105,12 @@ setup(
         "web3",
         "usdc",
         "base",
+        "level42",
+        "l42",
     ],
     project_urls={
-        "Bug Reports": "https://github.com/x402-agent/x402-agent-framework/issues",
-        "Source": "https://github.com/x402-agent/x402-agent-framework",
-        "Documentation": "https://docs.x402-agent.dev",
+        "Bug Reports": "https://github.com/level42-ai/level42-framework/issues",
+        "Source": "https://github.com/level42-ai/level42-framework",
+        "Documentation": "https://docs.level42.dev",
     },
 )

@@ -1,7 +1,7 @@
 """
-Core agent functionality for x402-Agent Framework.
+Core agent functionality for Level42 Framework.
 
-This module provides the main X402Agent class that orchestrates AI agents
+This module provides the main Level42Agent class that orchestrates AI agents
 with automatic micropayment capabilities.
 """
 
@@ -10,7 +10,7 @@ from typing import Any, Dict, List, Optional
 from .wallet import WalletManager
 from .payments import PaymentProcessor
 from .tools import ToolRegistry
-from .monitoring import X402Logger, DebugConfig, UsageAnalytics
+from .monitoring import Level42Logger, DebugConfig, UsageAnalytics
 
 
 class LLMProvider(ABC):
@@ -22,7 +22,7 @@ class LLMProvider(ABC):
         pass
 
 
-class X402Agent:
+class Level42Agent:
     """
     Main agent class that provides autonomous AI agents with micropayment capabilities.
     
@@ -46,7 +46,7 @@ class X402Agent:
         self.payment_processor = PaymentProcessor(self.wallet_manager, debug_config=debug_config)
         self.tool_registry = ToolRegistry()
         self.agent_id = f"agent_{id(self)}"
-        self.logger = X402Logger(debug_config or DebugConfig())
+        self.logger = Level42Logger(debug_config or DebugConfig())
         self.analytics = UsageAnalytics()
         self.session_id = self.analytics.start_session(self.agent_id)
     
@@ -108,10 +108,10 @@ class X402Agent:
         if debug_config is None:
             debug_config = DebugConfig(enabled=True, log_level="DEBUG", verbose_errors=True)
         
-        self.logger = X402Logger(debug_config)
+        self.logger = Level42Logger(debug_config)
         self.payment_processor.enable_debug_mode(debug_config)
         
-        self.logger.log_debug("Debug mode enabled for X402Agent", {
+        self.logger.log_debug("Debug mode enabled for Level42Agent", {
             'agent_id': self.agent_id,
             'wallet_address': self.wallet_manager.get_address(),
             'network': self.wallet_manager.network

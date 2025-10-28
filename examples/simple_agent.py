@@ -2,7 +2,7 @@
 """
 Simple Agent Example
 
-This example demonstrates basic usage of the x402-Agent Framework:
+This example demonstrates basic usage of the Level42 Framework:
 - One-line agent creation
 - Tool registration
 - Automatic payment handling for API calls
@@ -11,7 +11,7 @@ Requirements: 5.3, 5.4
 """
 
 import os
-from x402_agent import X402Agent
+from level42 import Level42Agent
 
 
 class MockLLMProvider:
@@ -33,12 +33,12 @@ def main():
     
     # One-line agent creation with LLM and wallet
     llm = MockLLMProvider()
-    agent = X402Agent(llm, private_key, network="base")
+    agent = Level42Agent(llm, private_key, network="base")
     
-    print("🤖 Simple x402-Agent created successfully!")
+    print("🤖 Simple Level42 Agent created successfully!")
     print(f"💰 Current balance: ${agent.get_balance():.2f} USDC")
     
-    # Register a tool (API endpoint that accepts x402 payments)
+    # Register a tool (API endpoint that accepts L42 payments)
     agent.register_tool(
         name="weather_api",
         endpoint="https://api.weather.com/v1/current",

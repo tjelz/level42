@@ -1,35 +1,43 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Orbitron, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const orbitron = Orbitron({
+  variable: "--font-orbitron",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "x402-Agent | Autonomous AI Agents That Pay",
+  title: "Level42 | Autonomous AI Agents That Pay",
   description: "Revolutionary framework enabling AI agents to autonomously pay for tools, APIs, and services using blockchain micropayments. No API keys. No subscriptions. Pure autonomy.",
-  keywords: ["AI", "blockchain", "micropayments", "autonomous agents", "x402", "USDC", "Base Network"],
-  authors: [{ name: "x402-Agent Team" }],
-  creator: "x402-Agent",
-  publisher: "x402-Agent",
+  keywords: ["AI", "blockchain", "micropayments", "autonomous agents", "level42", "L42", "USDC", "Base Network"],
+  authors: [{ name: "Level42 Team" }],
+  creator: "Level42",
+  publisher: "Level42",
   openGraph: {
-    title: "x402-Agent | Autonomous AI Agents That Pay",
+    title: "Level42 | Autonomous AI Agents That Pay",
     description: "Revolutionary framework enabling AI agents to autonomously pay for tools, APIs, and services using blockchain micropayments.",
-    url: "https://x402-agent.dev",
-    siteName: "x402-Agent",
+    url: "https://level42.dev",
+    siteName: "Level42",
     images: [
       {
-        url: "/og-image.png",
+        url: "/l42-banner.jpeg",
         width: 1200,
         height: 630,
-        alt: "x402-Agent - Autonomous AI Agents That Pay",
+        alt: "Level42 - Autonomous AI Agents That Pay",
       },
     ],
     locale: "en_US",
@@ -37,10 +45,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "x402-Agent | Autonomous AI Agents That Pay",
+    title: "Level42 | Autonomous AI Agents That Pay",
     description: "Revolutionary framework enabling AI agents to autonomously pay for tools, APIs, and services using blockchain micropayments.",
-    creator: "@x402agent",
-    images: ["/og-image.png"],
+    creator: "@level42ai",
+    images: ["/l42-banner.jpeg"],
   },
   robots: {
     index: true,
@@ -63,14 +71,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.jpg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="theme-color" content="#000000" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
+        className={`${inter.variable} ${orbitron.variable} ${jetbrainsMono.variable} antialiased bg-black text-white`}
       >
         {children}
       </body>

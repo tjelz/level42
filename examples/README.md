@@ -1,10 +1,10 @@
-# x402-Agent Framework Examples
+# Level42 Framework Examples
 
-This directory contains example implementations demonstrating the key features of the x402-Agent Framework.
+This directory contains example implementations demonstrating the key features of the Level42 Framework.
 
 ## Prerequisites
 
-1. Install the x402-agent framework:
+1. Install the level42 framework:
    ```bash
    pip install -e .
    ```
@@ -87,7 +87,7 @@ python examples/research_swarm.py
 
 ### Simple Agent
 ```
-🤖 Simple x402-Agent created successfully!
+🤖 Simple Level42 Agent created successfully!
 💰 Current balance: $10.00 USDC
 🔧 Weather API tool registered
 🌤️  Agent response: Mock response to: What's the weather like in San Francisco?
@@ -132,7 +132,7 @@ python examples/research_swarm.py
 All examples default to the Base network. You can modify the network by changing the `network` parameter:
 
 ```python
-agent = X402Agent(llm, private_key, network="base")  # or "ethereum", "solana"
+agent = Level42Agent(llm, private_key, network="base")  # or "ethereum", "solana"
 ```
 
 ### Mock vs Real APIs
@@ -168,5 +168,5 @@ These examples use mock LLM providers for demonstration. In production:
 ### Getting Help
 
 - Check the main README.md for installation instructions
-- Review the requirements.md and design.md in `.kiro/specs/x402-agent-framework/`
+- Review the requirements.md and design.md in `.kiro/specs/level42-framework/`
 - Ensure all dependencies are installed from requirements.txt

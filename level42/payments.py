@@ -1,7 +1,7 @@
 """
 Payment processing system for HTTP 402 handling.
 
-This module handles x402 micropayment flows, deferred payment batching,
+This module handles L42 micropayment flows, deferred payment batching,
 and transaction logging.
 """
 
@@ -13,7 +13,7 @@ import sqlite3
 import os
 from datetime import datetime, timedelta
 from .wallet import WalletManager, Payment
-from .monitoring import X402Logger, DebugConfig
+from .monitoring import Level42Logger, DebugConfig
 
 
 from .exceptions import (
@@ -34,7 +34,7 @@ class PaymentProcessor:
     and provides deferred payment batching for efficiency.
     """
     
-    def __init__(self, wallet_manager: WalletManager, db_path: str = "x402_payments.db", 
+    def __init__(self, wallet_manager: WalletManager, db_path: str = "level42_payments.db", 
                  debug_config: DebugConfig = None):
         """
         Initialize with wallet manager and database.
@@ -48,7 +48,7 @@ class PaymentProcessor:
         self.deferred_payments: List[Dict] = []
         self.payment_threshold = 10
         self.db_path = db_path
-        self.logger = X402Logger(debug_config or DebugConfig())
+        self.logger = Level42Logger(debug_config or DebugConfig())
         self._init_database()
     
     def handle_402_response(self, response: requests.Response) -> requests.Response:
@@ -188,7 +188,7 @@ class PaymentProcessor:
         """
         headers = response.headers
         
-        # Standard x402 headers
+        # Standard L42 headers
         amount_header = headers.get('X-Payment-Amount') or headers.get('Payment-Amount')
         recipient_header = headers.get('X-Payment-Address') or headers.get('Payment-Address')
         
@@ -716,7 +716,7 @@ class PaymentProcessor:
         if debug_config is None:
             debug_config = DebugConfig(enabled=True, log_level="DEBUG")
         
-        self.logger = X402Logger(debug_config)
+        self.logger = Level42Logger(debug_config)
         self.logger.log_debug("Debug mode enabled for PaymentProcessor")
     
     def get_debug_info(self) -> Dict[str, Any]:
