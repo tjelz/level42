@@ -523,18 +523,6 @@ The Level42 Framework will soon launch its native utility token to power the eco
 
 **Stay tuned for the official token launch announcement!** 
 
-Join our community channels below to be the first to know about the CA release and token distribution details.
-
-## 🔗 Links
-
-- **Documentation**: https://docs.level42.dev
-- **PyPI Package**: https://pypi.org/project/level42/
-- **GitHub Repository**: https://github.com/tjelz/level42
-- **Discord Community**: https://discord.gg/level42
-- **Twitter**: https://x.com/xlevel42
-- **Telegram**: https://t.me/xlevel42
-- **Medium Blog**: https://medium.com/@xlevel42
-
 ## 🏆 Roadmap
 
 ### Q4 2024
